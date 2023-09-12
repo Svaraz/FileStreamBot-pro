@@ -23,7 +23,7 @@ async def login_handler(c: Client, m: Message):
     try:
         try:
             ag = await m.reply_text("Now send me password.\n\n If You don't know check the MY_PASS Variable in heroku \n\n(You can use /cancel command to cancel the process)")
-            _text = await c.listen.Message(filters.text, m.chat.id, timeout=90)
+            _text = await c.listen.Message(filters.text, id=filters.chat(m.chat.id), timeout=90)
             if _text.text:
                 textp = _text.text
                 if textp == "/cancel":
