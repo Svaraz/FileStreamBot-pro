@@ -8,5 +8,5 @@ dnspython
 apscheduler
 requests
 psutil
-pyromod
+convopyro
 colorama
