@@ -14,18 +14,16 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from Adarsh.utils.file_properties import get_name, get_hash, get_media_file_size
 db = Database(Var.DATABASE_URL, Var.name)
 
-
 MY_PASS = os.environ.get("MY_PASS", None)
 pass_dict = {}
 pass_db = Database(Var.DATABASE_URL, "ag_passwords")
-
 
 @StreamBot.on_message((filters.regex("login🔑") | filters.command("login")) , group=4)
 async def login_handler(c: Client, m: Message):
     try:
         try:
             ag = await m.reply_text("Now send me password.\n\n If You don't know check the MY_PASS Variable in heroku \n\n(You can use /cancel command to cancel the process)")
-            _text = await c.listen(m.chat.id, filters=filters.text, timeout=90)
+            _text = await c.listen.Message(filters.text, m.chat.id, timeout=90)
             if _text.text:
                 textp = _text.text
                 if textp == "/cancel":
