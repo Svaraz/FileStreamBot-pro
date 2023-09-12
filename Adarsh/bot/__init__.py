@@ -1,6 +1,6 @@
 # (c) adarsh-goel
 from pyrogram import Client
-import pyromod.listen
+from convopyro import Conversation
 from ..vars import Var
 from os import getcwd
 
@@ -12,6 +12,7 @@ StreamBot = Client(
     sleep_threshold=Var.SLEEP_THRESHOLD,
     workers=Var.WORKERS
 )
+Conversation(StreamBot)
 
 multi_clients = {}
 work_loads = {}
