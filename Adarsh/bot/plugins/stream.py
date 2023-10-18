@@ -52,7 +52,12 @@ async def private_receive_handler(c: Client, m: Message):
             return
         if check_pass != MY_PASS:
             await pass_db.delete_user(m.chat.id)
-            return
+            return 
+
+    if m.from_user.id in Var.BANNED_USERS:
+        await m.reply_text("Sorry, You are banned.")
+        return
+    
     if not await db.is_user_exist(m.from_user.id):
         await db.add_user(m.from_user.id)
         await c.send_message(
